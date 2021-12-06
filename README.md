@@ -1,42 +1,35 @@
-![Logo](images/logo-for-readme.jpg)
+# Switch Post Status fom draft to publish and back.
 
-[![CodeFactor](https://www.codefactor.io/repository/github/xxsimoxx/icons-for-cp/badge)](https://www.codefactor.io/repository/github/xxsimoxx/icons-for-cp)
-![GitHub language count](https://img.shields.io/github/languages/count/xxsimoxx/icons-for-cp)
-![GitHub All Releases](https://img.shields.io/github/downloads/xxsimoxx/icons-for-cp/total)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/xxsimoxx/icons-for-cp?label=Download%20latest&sort=semver)](https://github.com/xxsimoxx/icons-for-cp/releases/latest)
+This plugin allows to switch post status fom draft to publish and back using a link in row actions.
 
-# Icons for CP
+## Configuring other actions
 
-This plugin allows to use SVG icons in post and pages.
+Use the `xsxswitch_lookup` filter.
 
-## Add new icons
-Just use the "Icons" menu in "Appearance" menu.
-Add your own icons or any from FontAwesome to the theme.
+Example:
 
-Put the name of the icon as the title (use something like my-brand-icon) and the SVG as the post.
+```php
+add_filter ('xsxswitch_lookup', 'myprefix_custom_sps_actions');
+function myprefix_custom_sps_actions($lookup) {
 
-*Note: if you uninstall the plugin your icons get lost.
-To keep them add `define('KEEP_ICONS_FOR_CP', true);` to `wp-config.php`.*
-
-## Shortcode and MCE menu
-
+	// Let it handle private posts and convert them to published.
+	$lookup['private'] = [
+		'dst' => 'publish',
+		'msg' => 'Switch to a great public post',
+	];
+	
+	// Change the text to a custom one for draft posts.
+	$lookup['draft'] = [
+		'dst' => 'publish',
+		'msg' => 'My custom lovely message',
+	];
+	
+	return $l;
+}
 ```
-[ifcp-icon icon='paw' size='16' color='#FF0000' class='my-wonderful-class']
-```
-Size (width, default 16px), color and class are optional.
 
-It also adds a menu to TinyMCE (v. 4 and v.5) to choose the icon and insert the shortcode for you.
 
-## Canuck CP
-This plugin integrates with [Canuck CP](https://kevinsspace.ca/canuck-cp-classicpress-theme/).
-Your icons are added to those present in the theme, and those present in the theme are available.
+## Privacy
 
-## WP CLI
-It is supported.
-Use `wp help icons` or `wp help icons add` to see usage instructions.
-You can bulk import a folder with a simple script like
-```sh
-for icon in *.svg; do
-	wp icons add "$icon";
-done
-```
+To help us know the number of active installations of this plugin, we collect and store anonymized data when the plugin check in for updates. The date and unique plugin identifier are stored as plain text and the requesting URL is stored as a non-reversible hashed value. This data is stored for up to 28 days.
+
