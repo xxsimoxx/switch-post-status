@@ -1,6 +1,6 @@
-# Switch Post Status fom draft to publish and back.
+# Switch Post Status from draft to publish and back.
 
-This plugin allows to switch post status fom draft to publish and back using a link in row actions.
+This plugin allows to switch post status from draft to publish and back using a link in row actions.
 
 ## Configuring other actions
 
