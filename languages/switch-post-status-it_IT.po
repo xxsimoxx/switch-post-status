@@ -1,0 +1,66 @@
+# Copyright (C) 2021 Gieffe edizioni srl
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Switch Post Status 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/switch-post-"
+"status\n"
+"POT-Creation-Date: 2021-12-06T10:39:28+00:00\n"
+"PO-Revision-Date: 2021-12-06 11:40+0100\n"
+"Last-Translator: root <root@giecloud1.gieffeedizioni.it>\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: switch-post-status\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: switch-post-status.php:103
+msgid "A higher level of permission is required to perform this action."
+msgstr ""
+
+#: switch-post-status.php:109
+msgid "Can't get post status."
+msgstr ""
+
+#: switch-post-status.php:117
+msgid "Can't switch post status."
+msgstr ""
+
+#. Author of the plugin
+msgid "Gieffe edizioni srl"
+msgstr ""
+
+#: switch-post-status.php:92
+msgid "Nonce error detected."
+msgstr ""
+
+#: switch-post-status.php:97
+msgid "Post ID not specified."
+msgstr ""
+
+#. Plugin Name of the plugin
+msgid "Switch Post Status"
+msgstr ""
+
+#. Description of the plugin
+msgid "Switch post status from draft to publish and back."
+msgstr ""
+
+#: switch-post-status.php:41
+msgid "Switch to draft"
+msgstr "Cambia in bozza"
+
+#: switch-post-status.php:37
+msgid "Switch to publish"
+msgstr "Cambia in pubblicato"
+
+#. Plugin URI of the plugin
+msgid "https://software.gieffeedizioni.it"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.gieffeedizioni.it"
+msgstr ""
