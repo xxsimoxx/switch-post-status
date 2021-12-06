@@ -29,19 +29,6 @@ class SwitchPostStatus{
 
 	public function __construct() {
 
-		// Array containing default behaviour.
-		// Can be changed using xsxswitch_lookup filter.
-		$this->lookup = [
-			'draft' => [
-				'dst' => 'publish',
-				'msg' => esc_html__('Switch to publish', 'switch-post-status'),
-			],
-			'publish' => [
-				'dst' => 'draft',
-				'msg' => esc_html__('Switch to draft', 'switch-post-status'),
-			],
-		];
-
 		// Load text domain.
 		add_action('plugins_loaded', [$this, 'text_domain']);
 
@@ -56,6 +43,23 @@ class SwitchPostStatus{
 
 	public function text_domain() {
 		load_plugin_textdomain('switch-post-status', false, basename(dirname(__FILE__)).'/languages');
+		// Get defaults here so they can be translated.
+		$this->get_defaults();
+	}
+
+	public function get_defaults() {
+		// Fill the array containing default behaviour.
+		// Can be changed using xsxswitch_lookup filter.
+		$this->lookup = [
+			'draft' => [
+				'dst' => 'publish',
+				'msg' => esc_html__('Switch to publish', 'switch-post-status'),
+			],
+			'publish' => [
+				'dst' => 'draft',
+				'msg' => esc_html__('Switch to draft', 'switch-post-status'),
+			],
+		];
 	}
 
 	public function action_link($actions, $post) {
