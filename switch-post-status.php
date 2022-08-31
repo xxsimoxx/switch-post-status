@@ -3,7 +3,9 @@
  * Plugin Name: Switch Post Status
  * Plugin URI: https://software.gieffeedizioni.it
  * Description: Switch post status from draft to publish and back.
- * Version: 1.0.1
+ * Version: 1.0.2
+ * Requires PHP: 5.6
+ * Requires CP: 1.1
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author: Gieffe edizioni srl
