@@ -3,7 +3,7 @@
  * Plugin Name: Switch Post Status
  * Plugin URI: https://software.gieffeedizioni.it
  * Description: Switch post status from draft to publish and back.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires PHP: 5.6
  * Requires CP: 1.1
  * License: GPL2
@@ -94,17 +94,17 @@ class SwitchPostStatus{
 	public function switch_to() {
 
 		// Nonce error, bail.
-		if (!wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$this::ACTION])), $this::ACTION)) {
+		if (!isset($_REQUEST[$this::ACTION]) || !wp_verify_nonce(sanitize_key(wp_unslash($_REQUEST[$this::ACTION])), $this::ACTION)) {
 			wp_die(esc_html__('Nonce error detected.', 'switch-post-status'));
 		}
 
 		// If no item id is present, bail.
-		if (!isset($_GET['post'])) {
+		if (!isset($_REQUEST['post'])) {
 			wp_die(esc_html__('Post ID not specified.', 'switch-post-status'));
 		}
 
 		// If user can't edit items, bail.
-		$post = (isset($_GET['post']) ? (int)$_GET['post'] : (int)$_POST['post']);
+		$post = (int)$_REQUEST['post'];
 		if (!current_user_can('publish_posts', $post)) {
 			wp_die(esc_html__('A higher level of permission is required to perform this action.', 'switch-post-status'));
 		}
@@ -126,6 +126,11 @@ class SwitchPostStatus{
 		// Update post status.
 		$new_status = $lookup[$status]['dst'];
 		wp_update_post(['ID' => $post, 'post_status' => $new_status]);
+
+		// Don't know the referer, bail.
+		if (!isset($_SERVER['HTTP_REFERER'])) {
+			wp_die(esc_html__('Can\'t switch post status.', 'switch-post-status'));
+		}
 
 		// Go back to edit.
 		wp_safe_redirect(wp_unslash($_SERVER['HTTP_REFERER']));
